@@ -146,7 +146,5 @@ class TestAnimal{
         for (Animal animal : animals){
             System.out.println(animal.voice());
         }
-
-
     }
 }
