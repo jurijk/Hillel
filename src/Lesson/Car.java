@@ -1,4 +1,4 @@
-package Lesson_4;
+package Lesson;
 
 public class Car {
     double capacity = 50; //Емкость бака. Перед началом поездки заливаем полный бак.

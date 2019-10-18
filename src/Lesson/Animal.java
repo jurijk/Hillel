@@ -1,4 +1,4 @@
-package Lesson_4;
+package Lesson;
 
 public class Animal {
     int id;
