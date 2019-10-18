@@ -132,7 +132,7 @@ class TestAnimal{
         Giraffe giraffe = new Giraffe(7,30,300,"yellow",true);
         Crocodile crocodile = new Crocodile(8,50,120,"green",true);
 
-        Animal[] animals = new Animal[9];
+        Animal[] animals = new Animal[9];//массив с объектами
         animals[0] = fish;
         animals[1] = cat;
         animals[2] = wolf;
