@@ -2,12 +2,12 @@ import java.util.Arrays;
 
 public class Collection {
 
-    static int size = 5;//размер массива
-    static int counter = 0;//количество элементов в массиве (коллекции)
+    static int size = 5; //размер массива
+    static int counter = 0; //количество элементов в массиве (коллекции)
     static String [] collect = new String[size];
 
 
-    void add (String string)   //метод добавляющий элемент
+    boolean add (String string)   //метод добавляющий элемент
     {
         for (int i=0; i < collect.length; i++)
         {
@@ -18,43 +18,63 @@ public class Collection {
                 break;
             }
         }
-        if (counter == collect.length - 1){ //увеличение размера массива
+
+        if (counter == collect.length - 1) //увеличение размера массива
+        {
         size = size + 5;
             String [] collectemp = Arrays.copyOf(collect, size);
             collect = collectemp;
         }
+        return true;
     }
 
 
-    String get (int index){//метод получения элемента по индексу
-        if (collect[index] != null){
+    String get (int index){ //метод получения элемента по индексу
+        if (index < counter)
+        {
+        if (collect[index] != null)
+            {
             return collect[index];
             }
         else return null;
-    }
-
-
-    void delete (int index){//метод удаления элемента по индексу
-        if (collect[index] != null){
-            for (int i=index; i < collect.length-1; i++){
-                collect[i] = collect[i+1];
-                }
-            counter--;
         }
-        else collect[index] = null;
+        return null;
     }
 
 
-    int getSize(){//метод получения размера массива
+    boolean delete (int index){ //метод удаления элемента по индексу
+        if (index < counter)
+        {
+            if (collect[index] != null)
+            {
+                for (int i = index; i < collect.length - 1; i++)
+                {
+                collect[i] = collect[i + 1];
+                }
+                counter--;
+                return true;
+            } else return false;
+        }
+        return false;
+    }
+
+
+    int getSize(){ //метод получения размера массива
         return counter;
     }
 
 
-    boolean contains(int index){//метод проверки наличия элемента
-        if (collect[index] == null)
-            return false;
-        else
-            return true;
+    boolean contains(int index) //метод проверки наличия элемента
+    {
+        if (index < counter)
+        {
+            if (collect[index] == null)
+                return false;
+
+            else
+                return true;
+        }
+        return false;
     }
 
 
@@ -65,11 +85,25 @@ public class Collection {
         }
     }
 
-     boolean equals(int index1, int index2){  //метод проверки двух элементов массива на эквивалентность
-        if (collect[index1] == collect[index2]){
-            return true;
-        }
-        else return false;
+     boolean equals(Collection collection)//метод проверки двух элементов массива на эквивалентность
+     {
+         int count1=0;
+         if (counter != collection.getSize())
+         {
+             for (int i = 0; i < counter; i++)
+             {
+                 if (collect[i] == collection.get(i))
+                 {
+                     count1++;
+                 }
+             }
+             if (counter == count1)
+             {
+                 return true;
+             }
+             else return false;
+         }
+         return false;
      }
 
     int indexOf(String string) //метод получения индекса элемента
@@ -88,14 +122,23 @@ public class Collection {
     }
 
 
-    public static void main(String[] args) {
+    Collection trim( Collection collection){ //метод обрезки массива под размер коллекции
+        if (collection.getSize() == collect.length) return collection;
+        else
+            {
+                String [] collectemp = Arrays.copyOf(collect, collection.getSize());
+                collect = collectemp;
+            }
+        return collection;
+    }
+
+    public static void main(String[] args)
+    {
         Collection collection = new Collection();
-        collection.add("one");
+        System.out.println(collection.add("one"));
         collection.add("two");
         collection.add("three");
-        System.out.println(collect.length);
         collection.add("four");
-        System.out.println(collect.length);
         collection.add("five");
         collection.add("six");
 
@@ -103,11 +146,18 @@ public class Collection {
         System.out.println(collection.get(1));
         System.out.println(collection.get(2));
         System.out.println(collection.get(3));
+        //System.out.println(collection.delete(5));
         System.out.println(collection.get(4));
-        System.out.println(collection.get(5));
 
         System.out.println(collection.getSize());
+
 
     }
 
 }
+
+
+
+
+
+
