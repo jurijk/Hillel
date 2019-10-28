@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Collection {
+ class Collection {
 
     static int size = 5; //размер массива
     static int counter = 0; //количество элементов в массиве (коллекции)
