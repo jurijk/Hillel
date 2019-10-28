@@ -7,7 +7,7 @@ import java.util.Arrays;
     static String [] collect = new String[size];
 
 
-    boolean add (String string)   //метод добавляющий элемент
+    boolean add (String string) //метод добавляющий элемент
     {
         for (int i=0; i < collect.length; i++)
         {
@@ -85,7 +85,7 @@ import java.util.Arrays;
         }
     }
 
-     boolean equals(Collection collection)//метод проверки двух элементов массива на эквивалентность
+     boolean equals(Collection collection) //метод проверки двух элементов массива на эквивалентность
      {
          int count1=0;
          if (counter != collection.getSize())
@@ -122,7 +122,9 @@ import java.util.Arrays;
     }
 
 
-    Collection trim( Collection collection){ //метод обрезки массива под размер коллекции
+    Collection trim( Collection collection) //метод обрезки массива под размер коллекции
+    {
+
         if (collection.getSize() == collect.length) return collection;
         else
             {
