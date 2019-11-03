@@ -122,7 +122,7 @@ import java.util.Arrays;
     }
 
 
-    Collection trim( Collection collection) //метод обрезки массива под размер коллекции
+    Collection trim( Collection collection)  //метод обрезки массива под размер коллекции
     {
 
         if (collection.getSize() == collect.length) return collection;
